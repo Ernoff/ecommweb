@@ -37,4 +37,13 @@ export class DataService {
     //remove user from local storage to log user out
     localStorage.removeItem('currentUser');
   }
+
+  getProducts(){
+    return this.http.get('http://localhost:3030/products')
+    .map((res: Response) => {
+      console.log(res.json());
+      let data = res.json().data;
+      return data
+    })
+  }
 }

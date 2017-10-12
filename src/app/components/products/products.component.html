@@ -14,7 +14,25 @@
 
 
     </div>
-    <div class="ui text container">
 
+</div>
+<div class="ui container">
+    <div class="ui four doubling stackable cards">
+        <div class="ui card" *ngFor="let product of products">
+            <div class="ui image">
+                <img src="/images/avatar2/large/matthew.png">
+            </div>
+            <div class="content">
+                <div class="header">{{product.name}}</div>
+                <div class="meta">
+                    <p>NGN {{product.price}}</p>
+                </div>
+            </div>
+            <div class="extra content center">
+                <div class="ui button center">
+                    <div class="ui green fluid button center">Add to Cart</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

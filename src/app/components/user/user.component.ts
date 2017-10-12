@@ -15,20 +15,16 @@ export class UserComponent implements OnInit {
     ngOnInit() {
   
     }
-     login(){
-        return this.dataService.login(this.model.username, this.model.password)
-            .subscribe(
-                data => {
-                    console.log(data)
-                    // this.router.navigate([this.returnUrl])
-                },
-                error => {
-                    console.log(error)
-                }
-            )
-        //  console.log('logging in');
-        //  console.log(this.model.username, this.model.password)
-  //   this.http.post('www.google.com', body)
-  //     .map(res => res.json());
-  }
+    login(){
+    return this.dataService.login(this.model.username, this.model.password)
+        .subscribe(
+            data => {
+                console.log(data)
+                // this.router.navigate([this.returnUrl])
+            },
+            error => {
+                console.log(error)
+            }
+        )
+    }
 }
