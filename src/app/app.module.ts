@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SuiModule } from 'ng2-semantic-ui';
 import { RouterModule, Routes } from '@angular/router'
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
@@ -9,6 +11,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { CartComponent } from './components/cart/cart.component';
 
+import { DataService } from './services/data.service';
 
 const appRoutes: Routes = [
   { path: 'user', component: UserComponent },
@@ -36,9 +39,13 @@ const appRoutes: Routes = [
       { enableTracing: true }
     ),
     BrowserModule,
-    SuiModule
+    SuiModule,
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

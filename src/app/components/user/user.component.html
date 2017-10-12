@@ -2,18 +2,18 @@
     <div class="ui middle aligned centered aligned grid">
         <div class="ui column">
             <h2 class="ui teal image header">Login </h2>
-            <form class="ui large form">
+            <form class="ui large form" novalidate #f="ngForm">
                 <div class='ui stacked segment'>
                     <div class='field'>
                         <div class='ui left icon input'>
                             <i class='user icon'></i>
-                            <input type="text" name="email" placeholder="E-mail address">
+                            <input type="text" name="email" placeholder="E-mail address" [(ngModel)]="model.username" #username="ngModel">
                         </div>
                     </div>
                     <div class='field'>
                         <div class='ui left icon input'>
                             <i class='lock icon'></i>
-                            <input type="password" name="password" placeholder="Password">
+                            <input type="password" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel">
                         </div>
                     </div>
                     <div class='ui fluid large tael submit button' (click)="login()">Login</div>
@@ -22,6 +22,7 @@
             <div class='ui message'>
                 New to us?
                 <a href="#">Sign Up</a>
+
             </div>
         </div>
     </div>
