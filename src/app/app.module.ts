@@ -22,6 +22,10 @@ const appRoutes: Routes = [
   { path: '',
     component: ProductsComponent
   },
+  {
+    path: 'products',
+    component: ProductsComponent
+  },
   { path: '**', component: PagenotfoundComponent }
 ];
 

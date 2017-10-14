@@ -4,13 +4,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 
-const body = {
-  
-}
+
 
 @Injectable()
 export class DataService {
-
+  // userDetails: any={};
   constructor(private http:Http) { }
   
   login(username:string, password:string){
@@ -21,13 +19,15 @@ export class DataService {
     console.log("from service" + username);
     return this.http.post('http://localhost:3030/authentication', body, options)
       .map((res: Response) => {
-        console.log(res);
+        // console.log(res);
         //login succesful if there is a jwt token in the response
        let user =  res.json();
        if(user && user.token){
        //store user details and jwt token in local storage to keep user loggin in between page refreshes
        localStorage.setItem('currentUser', JSON.stringify(user))}
-       console.log(user);
+      //  console.log(user);
+      // this.userDetails = user;
+      // console.log(this.userDetails)
        return user;
       })
       
@@ -45,5 +45,18 @@ export class DataService {
       let data = res.json().data;
       return data
     })
+  }
+
+  addCart(userId: string, productId:string){
+    var headers = new Headers({'Content-Type': 'application/json'});
+    var options = new RequestOptions({headers: headers});
+    var body = JSON.stringify({customer:userId, products:productId});
+    //make the call
+    
+    return this.http.post('http://localhost:3030/orders', body, options)
+      .map((res: Response) => {
+       let data = res.json();
+       return data
+      })
   }
 }

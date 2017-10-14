@@ -16,7 +16,7 @@
     </div>
 
 </div>
-<div class="ui container">
+<div class="ui very padded segment">
     <div class="ui four doubling stackable cards">
         <div class="ui card" *ngFor="let product of products">
             <div class="ui image">
@@ -30,7 +30,7 @@
             </div>
             <div class="extra content center">
                 <div class="ui button center">
-                    <div class="ui green fluid button center">Add to Cart</div>
+                    <div class="ui green fluid button center" (click)="addToCart(product._id)">Add to Cart</div>
                 </div>
             </div>
         </div>
