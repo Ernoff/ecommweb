@@ -9,7 +9,7 @@
 
                 <a routerLink="/user" routerLinkActive="active" class="ui button">Log in</a>
                 <a class="ui button" (click)="logOut()">Log out</a>
-                <a routerLink="/cart" routerLinkActive="active" class="ui button">Cart<div class="ui label red">{{cartqty}}</div></a>
+                <a class="ui button" (click)="goToCart()">Cart<div class="ui label red">{{cartqty}}</div></a>
             </div>
         </div>
 
@@ -17,6 +17,10 @@
     </div>
 
 </div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
 <div class="ui very padded segment">
     <div class="ui four doubling stackable cards">
         <div class="ui card" *ngFor="let product of products">

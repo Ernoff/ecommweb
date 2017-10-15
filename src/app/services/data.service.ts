@@ -29,8 +29,7 @@ export class DataService {
       
   }
   cartSize(userId: string){
-    console.log(userId);
-    const url = `http://localhost:3030/orders/?customer=${userId}`
+    let url = `http://localhost:3030/orders/?customer=${userId}`
     return this.http.get(url)
     .map((res: Response) => {
       let data = res.json().data;
@@ -42,6 +41,15 @@ export class DataService {
     localStorage.removeItem('currentUser');
     let user = null
     return user;
+  }
+
+  fetchCart(userId: string){
+    let url = `http://localhost:3030/orders/?customer=${userId}`
+    return this.http.get(url)
+      .map((res: Response) => {
+        let data = res.json();
+        return data;
+      })
   }
 
   getProducts(){

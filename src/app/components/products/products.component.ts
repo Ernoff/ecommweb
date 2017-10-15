@@ -54,7 +54,7 @@ export class ProductsComponent implements OnInit {
       .subscribe(
         data => {
           // console.log(data)
-          this.products = data;
+         return this.products = data;
           // this.router.navigate([this.returnUrl])
         },
         error => {
@@ -62,9 +62,11 @@ export class ProductsComponent implements OnInit {
         }
       )
   }
-  // toCart(){
-  //   return this.router.navigate(['cart']);
-  // }
+
+  goToCart(){
+   return this.router.navigate(['cart', {user: this.userDetails}]);
+  }
+
   logOut(){
     return this.router.navigate(['']);
     
