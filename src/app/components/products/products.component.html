@@ -8,7 +8,8 @@
             <div class="ui right floated item">
 
                 <a routerLink="/user" routerLinkActive="active" class="ui button">Log in</a>
-                <a class="ui button">Sign Up</a>
+                <a class="ui button" (click)="logOut()">Log out</a>
+                <a routerLink="/cart" routerLinkActive="active" class="ui button">Cart<div class="ui label red">{{cartqty}}</div></a>
             </div>
         </div>
 

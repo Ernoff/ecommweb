@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 
 @Component({
@@ -10,15 +10,18 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
   products:Products[];
+  cartqty: string;
   userDetails: any={};
   constructor(
     private dataService:DataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.getProducts();
     this.userDetails = this.route.snapshot.params['user'];
+    this.cartSize();
     console.log(this.userDetails)
   }
   
@@ -35,6 +38,17 @@ export class ProductsComponent implements OnInit {
 
       )
   }
+  cartSize(){
+    this.dataService.cartSize(this.userDetails)
+      .subscribe(
+        data => {
+          return this.cartqty = data.length;
+        },
+        error => {
+          console.log(error)
+        }
+      )
+  }
   getProducts(){
     this.dataService.getProducts()
       .subscribe(
@@ -48,6 +62,15 @@ export class ProductsComponent implements OnInit {
         }
       )
   }
+  // toCart(){
+  //   return this.router.navigate(['cart']);
+  // }
+  logOut(){
+    return this.router.navigate(['']);
+    
+  }
+
+  //end of class
 }
 
 interface Products {
